@@ -23,6 +23,8 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("signup");
+
       const response = await axiosInstance.post("auth/register", userData);
       toast(response.data.message);
       navigate("/login");

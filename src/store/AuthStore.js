@@ -4,8 +4,9 @@ import { toast } from "react-toastify";
 import { persist } from "zustand/middleware";
 import io from "socket.io-client";
 import { redirect } from "react-router-dom";
+import { server } from "../constants/config";
 
-const BASE_URL = "";
+const BASE_URL = server;
 
 export const useAuthStore = create(
   persist(
