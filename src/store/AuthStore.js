@@ -5,6 +5,7 @@ import { persist } from "zustand/middleware";
 import io from "socket.io-client";
 import { redirect } from "react-router-dom";
 import { server } from "../constants/config";
+import { useChatStore } from "./ChatStore";
 
 const BASE_URL = server;
 

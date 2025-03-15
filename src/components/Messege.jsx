@@ -24,8 +24,12 @@ function Messege() {
     <>
       <Navbar currentPage="message" />
       <div className="flex">
-        <SideBarUsers />
-        <div className="flex-1 me-1">
+        <div className={`flex ${selectedUser.id ? "max-sm:hidden" : ""}`}>
+          <SideBarUsers />
+        </div>
+        <div
+          className={`flex-1 me-1 ${selectedUser.id ? "" : "max-sm:hidden"}`}
+        >
           {selectedUser.id ? (
             <>
               <ChatHeader />

@@ -6,7 +6,7 @@ const SideBarUsers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const { setSelectedUser, selectedUser } = useChatStore();
+  const { setSelectedUser, selectedUser, removeSelectedUsers } = useChatStore();
   const { sideBarUsers, getSideBarUsers, authUser, getSearchedUsers } =
     useAuthStore();
 
@@ -22,6 +22,7 @@ const SideBarUsers = () => {
     }
     return () => {
       setUsers([]);
+      removeSelectedUsers();
     };
   }, [sideBarUsers]);
 
@@ -44,7 +45,7 @@ const SideBarUsers = () => {
   }
 
   return (
-    <aside className="bg-gray-950 p-3 min-md:w-2/12">
+    <aside className="bg-gray-950 p-3 min-md:w-2/12 overflow-x-auto">
       <div className="mb-3">
         <input
           value={search}
@@ -74,7 +75,7 @@ const SideBarUsers = () => {
                 <span className="text-xl">{user?.name[0]}</span>
               </div>
             </div>
-            <span className="text-xl max-md:hidden">{user?.name}</span>
+            <span className="text-xl">{user?.name}</span>
           </button>
         );
       })}

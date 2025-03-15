@@ -9,6 +9,9 @@ export const useChatStore = create((set, get) => ({
   setSelectedUser: (id, name) => {
     set({ selectedUser: { id, name } });
   },
+  removeSelectedUsers: () => {
+    set({ selectedUser: {} });
+  },
   fetchMessages: async (userId) => {
     const response = await axiosInstance.get(`chat/${userId}`);
     set({ messages: response.data.messages });
